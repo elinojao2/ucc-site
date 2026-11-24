@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UCC — United Content Creators for Change</title>
+<meta name="description" content="United Content Creators for Change (UCC) — creators working together for truth, respect and positive change in our community.">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f1f24;
+    --deep:#0b3b40;
+    --teal:#127a74;
+    --gold:#f2b632;
+    --coral:#e8603c;
+    --paper:#f7f4ee;
+    --card:#ffffff;
+    --muted:#5b6b6e;
+    --line:#e3ddd2;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{width:min(1120px,92%);margin-inline:auto}
+  h1,h2,h3{font-family:"Archivo Black",Inter,sans-serif;line-height:1.1;letter-spacing:-.01em}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:.75rem}
+  section{padding:88px 0}
+  .section-head{max-width:680px;margin-bottom:44px}
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.7rem)}
+  .section-head p{color:var(--muted);margin-top:.9rem;font-size:1.05rem}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(247,244,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;font-weight:700}
+  .brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;background:var(--deep)}
+  .brand span{font-family:"Archivo Black",sans-serif;font-size:1.25rem;color:var(--deep)}
+  .nav ul{display:flex;gap:1.6rem;list-style:none}
+  .nav ul a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink);opacity:.8}
+  .nav ul a:hover{opacity:1;color:var(--teal)}
+  .menu-btn{display:none;background:none;border:0;width:40px;height:40px;cursor:pointer}
+  .menu-btn span{display:block;height:2px;background:var(--ink);margin:7px 8px;border-radius:2px}
+
+  /* HERO */
+  .hero{background:var(--deep);color:#fff;padding:96px 0 110px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;right:-180px;top:-180px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(242,182,50,.28),transparent 65%)}
+  .hero::after{content:"";position:absolute;left:-120px;bottom:-200px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(18,122,116,.6),transparent 65%)}
+  .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center;position:relative;z-index:1}
+  .hero .eyebrow{color:var(--gold)}
+  .hero h1{font-size:clamp(2.4rem,6vw,4.3rem)}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero p{margin-top:1.3rem;font-size:1.12rem;max-width:540px;color:rgba(255,255,255,.82)}
+  .btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+  .btn{display:inline-block;padding:.85rem 1.5rem;border-radius:999px;font-weight:700;text-decoration:none;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-gold{background:var(--gold);color:var(--ink)}
+  .btn-ghost{border:2px solid rgba(255,255,255,.4);color:#fff}
+  .hero-logo{justify-self:center;width:min(340px,80vw);aspect-ratio:1;border-radius:50%;background:#fff;padding:18px;box-shadow:0 30px 70px rgba(0,0,0,.35);display:grid;place-items:center}
+  .hero-logo img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+  .logo-fallback{font-family:"Archivo Black",sans-serif;font-size:5rem;color:var(--deep)}
+
+  /* ABOUT strip */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:-56px;position:relative;z-index:2}
+  .pillar{background:var(--card);border-radius:var(--radius);padding:26px;box-shadow:0 12px 30px rgba(15,31,36,.08)}
+  .pillar b{display:block;font-family:"Archivo Black",sans-serif;font-size:1.15rem;color:var(--deep);margin-bottom:.3rem}
+  .pillar p{color:var(--muted);font-size:.96rem}
+  .pillar .dot{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-bottom:14px;font-size:1.2rem}
+
+  /* PIONEERS */
+  .pioneers-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+  .pioneer{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:transform .2s,box-shadow .2s}
+  .pioneer:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,31,36,.12)}
+  .pioneer .photo{aspect-ratio:4/5;background:linear-gradient(160deg,var(--teal),var(--deep));position:relative;display:grid;place-items:center}
+  .pioneer .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .pioneer .initials{font-family:"Archivo Black",sans-serif;font-size:2.6rem;color:rgba(255,255,255,.9)}
+  .pioneer .info{padding:16px 16px 18px}
+  .pioneer h3{font-size:1.02rem;font-family:Inter,sans-serif;font-weight:700}
+  .pioneer small{color:var(--teal);font-weight:600;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase}
+
+  /* OFFICERS */
+  .officers{padding-top:0}
+  .officer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .officer-grid.advisers{grid-template-columns:repeat(2,minmax(0,1fr));max-width:560px}
+  .officer{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 16px;text-align:center;transition:transform .2s,box-shadow .2s}
+  .officer:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,31,36,.12)}
+  .officer.lead{background:var(--deep);color:#fff;border-color:var(--deep)}
+  .officer .avatar{width:120px;height:120px;margin:0 auto 14px;border-radius:50%;position:relative;display:grid;place-items:center;background:linear-gradient(160deg,var(--teal),var(--deep));border:4px solid var(--gold);overflow:hidden}
+  .officer .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .officer .avatar span{font-family:"Archivo Black",sans-serif;font-size:2rem;color:rgba(255,255,255,.9)}
+  .officer .role{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:#fdf1d6;color:#8a5a00;padding:.25rem .7rem;border-radius:999px;margin-bottom:.5rem}
+  .officer.lead .role{background:var(--gold);color:var(--ink)}
+  .officer h3{font-family:Inter,sans-serif;font-weight:700;font-size:1.02rem;line-height:1.3}
+  .sub-head{font-size:1.5rem;margin:52px 0 22px;color:var(--deep)}
+
+  /* ETHICS */
+  #ethics{background:#fff;border-block:1px solid var(--line)}
+  .ethics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .ethic{display:flex;gap:18px;padding:24px;border-radius:var(--radius);background:var(--paper);border:1px solid var(--line)}
+  .ethic .num{flex:none;width:46px;height:46px;border-radius:12px;background:var(--deep);color:var(--gold);font-family:"Archivo Black",sans-serif;display:grid;place-items:center;font-size:1.05rem}
+  .ethic h3{font-family:Inter,sans-serif;font-weight:700;font-size:1.08rem;margin-bottom:.25rem}
+  .ethic p{color:var(--muted);font-size:.96rem}
+  .pledge{margin-top:40px;background:var(--deep);color:#fff;border-radius:22px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:36px}
+  .pledge h3{font-size:1.6rem;color:var(--gold);margin-bottom:.8rem}
+  .pledge p,.pledge li{color:rgba(255,255,255,.85)}
+  .pledge ol{padding-left:1.2rem;display:grid;gap:.5rem}
+  .pledge blockquote{font-size:1.12rem;font-style:italic;border-left:4px solid var(--gold);padding-left:18px;margin-top:1rem}
+
+  /* EVENTS */
+  .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:24px}
+  .filters button{border:1px solid var(--line);background:#fff;padding:.5rem 1rem;border-radius:999px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--ink)}
+  .filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:14px}
+  .shot{position:relative;border-radius:14px;overflow:hidden;cursor:pointer;background:linear-gradient(135deg,var(--teal),var(--deep))}
+  .shot.big{grid-column:span 2;grid-row:span 2}
+  .shot.wide{grid-column:span 2}
+  .shot img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .shot:hover img{transform:scale(1.05)}
+  .shot .cap{position:absolute;inset:auto 0 0 0;padding:40px 16px 14px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff}
+  .shot .cap b{display:block;font-size:1rem}
+  .shot .cap span{font-size:.82rem;opacity:.85}
+  .shot .ph{position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.55);font-weight:600;font-size:.9rem;text-align:center;padding:10px}
+  .shot.hide{display:none}
+
+  /* HIGHLIGHTS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-align:center}
+  .stat b{display:block;font-family:"Archivo Black",sans-serif;font-size:2.2rem;color:var(--coral)}
+  .stat span{color:var(--muted);font-weight:600;font-size:.9rem}
+
+  /* JOIN */
+  .join{background:var(--gold);border-radius:24px;padding:52px;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .join h2{font-size:clamp(1.7rem,3.5vw,2.4rem);max-width:560px}
+  .join .btn{background:var(--ink);color:#fff}
+
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:44px 0;margin-top:88px;font-size:.92rem}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+  footer .brand span{color:#fff}
+
+  /* LIGHTBOX */
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:100;padding:20px;flex-direction:column}
+  .lightbox.open{display:flex}
+  .lightbox img{max-height:80vh;border-radius:10px}
+  .lightbox p{color:#fff;margin-top:14px;text-align:center}
+  .lightbox button{position:absolute;top:18px;right:22px;background:none;border:0;color:#fff;font-size:2.2rem;cursor:pointer}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:980px){
+    .pioneers-grid{grid-template-columns:repeat(3,1fr)}
+    .officer-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:760px){
+    section{padding:64px 0}
+    .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:18px 4%;gap:1rem;border-bottom:1px solid var(--line)}
+    .nav ul.open{display:flex}
+    .menu-btn{display:block}
+    .hero{padding:64px 0 100px}
+    .hero-grid{grid-template-columns:1fr;text-align:center}
+    .hero p{margin-inline:auto}
+    .btns{justify-content:center}
+    .hero-logo{grid-row:1;width:200px}
+    .pillars{grid-template-columns:1fr}
+    .pioneers-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+    .ethics-grid{grid-template-columns:1fr}
+    .officer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .officer .avatar{width:96px;height:96px}
+    .officer h3{font-size:.95rem}
+    .pledge{grid-template-columns:1fr;padding:28px}
+    .gallery{grid-auto-rows:160px}
+    .shot.big{grid-column:span 2;grid-row:span 2}
+    .join{padding:32px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav">
+    <a href="#top" class="brand">
+      <img src="images/logo.png" alt="UCC logo" onerror="this.style.display='none'">
+      <span>UCC</span>
+    </a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+    <ul id="menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#pioneers">Pioneers</a></li>
+      <li><a href="#officers">Officers</a></li>
+      <li><a href="#ethics">Ethics</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#join">Join</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">United Content Creators for Change</span>
+      <h1>Create with purpose.<br><em>Unite for change.</em></h1>
+      <p>UCC is a community of content creators who believe our platforms can do good — sharing truth, lifting up our communities, and setting a higher standard for how we create online.</p>
+      <div class="btns">
+        <a href="#ethics" class="btn btn-gold">Our Code of Ethics</a>
+        <a href="#pioneers" class="btn btn-ghost">Meet the Pioneers</a>
+      </div>
+    </div>
+    <div class="hero-logo">
+      <img src="images/logo.png" alt="United Content Creators for Change logo"
+           onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',textContent:'UCC'}))">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="wrap pillars" id="about">
+  <div class="pillar reveal">
+    <div class="dot" style="background:#e4f3f1">🤝</div>
+    <b>United</b>
+    <p>Creators supporting creators — collaboration over competition.</p>
+  </div>
+  <div class="pillar reveal">
+    <div class="dot" style="background:#fdf1d6">🎥</div>
+    <b>Content Creators</b>
+    <p>Vloggers, streamers, writers and storytellers from our community.</p>
+  </div>
+  <div class="pillar reveal">
+    <div class="dot" style="background:#fbe3db">🌱</div>
+    <b>For Change</b>
+    <p>Using our voices for public service, honest news and positive impact.</p>
+  </div>
+</div>
+
+<!-- PIONEERS -->
+<section id="pioneers">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Founders</span>
+      <h2>Our Pioneers</h2>
+      <p>The creators who started UCC and set its vision: a united creator community that stands for truth, respect and real change.</p>
+    </div>
+    <div class="pioneers-grid">
+      <article class="pioneer reveal">
+        <div class="photo"><span class="initials">KK</span><img src="images/pioneers/ka-kosa-ph.jpg" alt="KA Kosa PH" onerror="this.remove()"></div>
+        <div class="info"><small>Pioneer</small><h3>KA Kosa PH</h3></div>
+      </article>
+      <article class="pioneer reveal">
+        <div class="photo"><span class="initials">DM</span><img src="images/pioneers/danica-tuga-malinao.jpg" alt="Danica Tuga Malinao" onerror="this.remove()"></div>
+        <div class="info"><small>Pioneer</small><h3>Danica Tuga Malinao</h3></div>
+      </article>
+      <article class="pioneer reveal">
+        <div class="photo"><span class="initials">YN</span><img src="images/pioneers/ya-na.jpg" alt="Ya Na" onerror="this.remove()"></div>
+        <div class="info"><small>Pioneer</small><h3>Ya Na</h3></div>
+      </article>
+      <article class="pioneer reveal">
+        <div class="photo"><span class="initials">GM</span><img src="images/pioneers/gilbert-langiles-marcial.jpg" alt="Gilbert Langiles Marcial" onerror="this.remove()"></div>
+        <div class="info"><small>Pioneer</small><h3>Gilbert Langiles Marcial</h3></div>
+      </article>
+      <article class="pioneer reveal">
+        <div class="photo"><span class="initials">KN</span><img src="images/pioneers/kapitan-natoy.jpg" alt="Kapitan Natoy" onerror="this.remove()"></div>
+        <div class="info"><small>Pioneer</small><h3>Kapitan Natoy</h3></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICERS -->
+<section id="officers" class="officers">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Leadership</span>
+      <h2>Newly Elected Set of Officers</h2>
+      <p>The officers leading UCC as we unite our creators for change.</p>
+    </div>
+    <div class="officer-grid" id="officerGrid"></div>
+
+    <h3 class="sub-head reveal">UCC Advisers</h3>
+    <div class="officer-grid advisers" id="adviserGrid"></div>
+  </div>
+</section>
+
+<!-- ETHICS -->
+<section id="ethics">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Code of Ethics &amp; Conduct</span>
+      <h2>What every UCC creator stands for</h2>
+      <p>Being part of UCC means holding ourselves to a higher standard. These principles guide every post, live stream, video and comment we make.</p>
+    </div>
+    <div class="ethics-grid">
+      <div class="ethic reveal"><div class="num">01</div><div><h3>Truth &amp; Accuracy</h3><p>Verify before you post. No fake news, edited misinformation or rumors presented as fact. If unsure, say so — or don't post it.</p></div></div>
+      <div class="ethic reveal"><div class="num">02</div><div><h3>Respect &amp; Dignity</h3><p>No hate speech, bullying, body-shaming, or attacks on anyone's religion, tribe, gender or background. Disagree with ideas, never degrade people.</p></div></div>
+      <div class="ethic reveal"><div class="num">03</div><div><h3>Privacy &amp; Consent</h3><p>Ask before filming or posting people. Protect minors, victims, patients and the grieving — blur faces and never share private details.</p></div></div>
+      <div class="ethic reveal"><div class="num">04</div><div><h3>Originality &amp; Credit</h3><p>No reposting or stealing others' content. Always credit the original creator, photographer or source.</p></div></div>
+      <div class="ethic reveal"><div class="num">05</div><div><h3>No Clickbait or Exploitation</h3><p>Titles and thumbnails must be honest. Never exploit tragedy, poverty or suffering for views or engagement.</p></div></div>
+      <div class="ethic reveal"><div class="num">06</div><div><h3>Transparency</h3><p>Clearly disclose sponsored, paid or partnered content. Our audience deserves to know when we are being paid.</p></div></div>
+      <div class="ethic reveal"><div class="num">07</div><div><h3>Collaboration over Competition</h3><p>Support fellow members, share opportunities and settle disagreements privately and respectfully — never through public call-outs.</p></div></div>
+      <div class="ethic reveal"><div class="num">08</div><div><h3>Community First</h3><p>Use our reach for public service: emergencies, local announcements, causes and helping those in need.</p></div></div>
+      <div class="ethic reveal"><div class="num">09</div><div><h3>Accountability</h3><p>When we make a mistake, we correct it publicly and quickly, apologize sincerely and learn from it.</p></div></div>
+      <div class="ethic reveal"><div class="num">10</div><div><h3>Represent UCC Well</h3><p>Online and offline, our actions reflect the group. Act with integrity at events, in comments and in everyday life.</p></div></div>
+    </div>
+
+    <div class="pledge reveal">
+      <div>
+        <h3>The UCC Pledge</h3>
+        <p>Every member commits to these principles when joining the group.</p>
+        <blockquote>"I will create with honesty, respect and purpose. I will use my voice to unite, not divide — and to bring positive change to my community."</blockquote>
+      </div>
+      <div>
+        <h3>When the code is broken</h3>
+        <ol>
+          <li>A private reminder from the officers.</li>
+          <li>A formal warning and request to remove or correct the content.</li>
+          <li>Temporary suspension from UCC activities.</li>
+          <li>Removal from the group for serious or repeated violations.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Events &amp; Highlights</span>
+      <h2>Moments that moved us</h2>
+      <p>Outreach programs, creator meetups and community activities — UCC in action.</p>
+    </div>
+
+    <div class="filters">
+      <button class="active" data-f="all">All</button>
+      <button data-f="outreach">Outreach</button>
+      <button data-f="meetup">Meetups</button>
+      <button data-f="community">Community</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <figure class="shot big" data-cat="outreach">
+        <div class="ph">Add event photo</div>
+        <img src="images/events/event1.jpg" alt="UCC outreach program" onerror="this.remove()">
+        <figcaption class="cap"><b>UCC Outreach Program</b><span>Giving back to the community</span></figcaption>
+      </figure>
+      <figure class="shot" data-cat="meetup">
+        <div class="ph">Add event photo</div>
+        <img src="images/events/event2.jpg" alt="Creators meetup" onerror="this.remove()">
+        <figcaption class="cap"><b>Creators Meetup</b><span>Founding gathering</span></figcaption>
+      </figure>
+      <figure class="shot" data-cat="community">
+        <div class="ph">Add event photo</div>
+        <img src="images/events/event3.jpg" alt="Community coverage" onerror="this.remove()">
+        <figcaption class="cap"><b>Community Coverage</b><span>Local events live</span></figcaption>
+      </figure>
+      <figure class="shot wide" data-cat="meetup">
+        <div class="ph">Add event photo</div>
+        <img src="images/events/event4.jpg" alt="Content creation workshop" onerror="this.remove()">
+        <figcaption class="cap"><b>Content Creation Workshop</b><span>Learning together</span></figcaption>
+      </figure>
+      <figure class="shot" data-cat="outreach">
+        <div class="ph">Add event photo</div>
+        <img src="images/events/event5.jpg" alt="Relief drive" onerror="this.remove()">
+        <figcaption class="cap"><b>Relief Drive</b><span>Creators for a cause</span></figcaption>
+      </figure>
+      <figure class="shot" data-cat="community">
+        <div class="ph">Add event photo</div>
+        <img src="images/events/event6.jpg" alt="Fiesta coverage" onerror="this.remove()">
+        <figcaption class="cap"><b>Fiesta Coverage</b><span>Celebrating our town</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="stats">
+      <div class="stat reveal"><b>5</b><span>Pioneers</span></div>
+      <div class="stat reveal"><b>10</b><span>Ethics principles</span></div>
+      <div class="stat reveal"><b>6+</b><span>Events held</span></div>
+      <div class="stat reveal"><b>1</b><span>United community</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<div class="wrap" id="join">
+  <div class="join reveal">
+    <h2>Are you a creator who wants to make a difference?</h2>
+    <a class="btn" href="https://facebook.com" target="_blank" rel="noopener">Message UCC on Facebook</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#top" class="brand"><img src="images/logo.png" alt="" onerror="this.style.display='none'"><span>UCC</span></a>
+    <p>© <span id="yr"></span> United Content Creators for Change. Create with purpose.</p>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button aria-label="Close" onclick="closeLB()">×</button>
+  <img id="lbImg" alt="">
+  <p id="lbCap"></p>
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // officers — photo files go in images/officers/<file>.jpg
+  const officers = [
+    {role:'President', name:'Christopher Talino Mix Vlog', file:'christopher-talino', ini:'CT', lead:true},
+    {role:'Vice President', name:'Althea Smt Vlog', file:'althea-smt', ini:'AS'},
+    {role:'Secretary', name:'Matcha Latte', file:'matcha-latte', ini:'ML'},
+    {role:'Treasurer', name:'Ronald Alvarez Agapin', file:'ronald-agapin', ini:'RA'},
+    {role:'P.I.O.', name:'RB Acneuc Orecreb', file:'rb-orecreb', ini:'RO'},
+    {role:'Business Manager', name:'Jao Noa', file:'jao-noa', ini:'JN'},
+    {role:'Business Manager', name:'Randy S. Galagate', file:'randy-galagate', ini:'RG'},
+    {role:'Muse', name:'Reyna Marie Paquit Juarez', file:'reyna-juarez', ini:'RJ'}
+  ];
+  const advisers = [
+    {role:'Adviser', name:'Boy "Waykurat" Sumin', file:'boy-sumin', ini:'BS'},
+    {role:'Adviser', name:'Anak Sa Bayan', file:'anak-sa-bayan', ini:'AB'}
+  ];
+  const card = o => `
+    <article class="officer reveal${o.lead ? ' lead' : ''}">
+      <div class="avatar"><span>${o.ini}</span><img src="images/officers/${o.file}.jpg" alt="${o.name.replace(/"/g,'&quot;')}" onerror="this.remove()"></div>
+      <div class="role">${o.role}</div>
+      <h3>${o.name}</h3>
+    </article>`;
+  document.getElementById('officerGrid').innerHTML = officers.map(card).join('');
+  document.getElementById('adviserGrid').innerHTML = advisers.map(card).join('');
+
+  // close mobile menu on link tap
+  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => document.getElementById('menu').classList.remove('open')));
+
+  // gallery filters
+  document.querySelectorAll('.filters button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.f;
+      document.querySelectorAll('.shot').forEach(s => s.classList.toggle('hide', f !== 'all' && s.dataset.cat !== f));
+    });
+  });
+
+  // lightbox
+  const lb = document.getElementById('lightbox');
+  document.querySelectorAll('.shot').forEach(s => s.addEventListener('click', () => {
+    const img = s.querySelector('img');
+    if (!img) return;
+    document.getElementById('lbImg').src = img.src;
+    document.getElementById('lbCap').textContent = s.querySelector('.cap b').textContent;
+    lb.classList.add('open');
+  }));
+  function closeLB(){ lb.classList.remove('open'); }
+  lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+
+  // scroll reveal
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
